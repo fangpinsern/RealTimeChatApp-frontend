@@ -16,6 +16,7 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [roomUsers, setRoomUsers] = useState([]);
+  const [hasError, setHasError] = useState(false);
   const ENDPOINT = "localhost:5000";
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const Chat = ({ location }) => {
     console.log(socket);
     socket.emit("join", { name, room }, (error) => {
       if (error) {
+        setHasError(true);
         return alert(error);
       }
     });
@@ -58,7 +60,16 @@ const Chat = ({ location }) => {
 
   console.log(message, messages);
 
-  return (
+  return hasError ? (
+    <div className="outerContainer">
+      <div className="container">
+        <a href="/">
+          <button>Back</button>
+        </a>
+      </div>
+      <TextContainer users={roomUsers} />
+    </div>
+  ) : (
     <div className="outerContainer">
       <div className="container">
         <InfoBar room={room} />
