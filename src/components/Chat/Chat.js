@@ -17,7 +17,7 @@ const Chat = ({ location }) => {
   const [messages, setMessages] = useState([]);
   const [roomUsers, setRoomUsers] = useState([]);
   const [hasError, setHasError] = useState(false);
-  const ENDPOINT = "https://ancient-brushlands-69345.herokuapp.com";
+  const ENDPOINT = "https://ancient-brushlands-69345.herokuapp.com/";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
