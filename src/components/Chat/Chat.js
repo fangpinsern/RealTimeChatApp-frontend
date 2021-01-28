@@ -28,7 +28,6 @@ const Chat = ({ location }) => {
     socket.emit("join", { name, room }, (error) => {
       if (error) {
         setHasError(true);
-        return alert(error);
       }
     });
 
@@ -80,7 +79,7 @@ const Chat = ({ location }) => {
           setMessage={setMessage}
         />
       </div>
-      <TextContainer users={roomUsers} />
+      <TextContainer users={roomUsers} room={room} />
     </div>
   );
 };

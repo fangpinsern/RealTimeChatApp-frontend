@@ -1,11 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import queryString from "query-string";
 import { Link } from "react-router-dom";
 
 import "./Join.css";
 
-const Join = () => {
+const Join = ({ location }) => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
+  const [hasInitialRoom, setHasInitialRoom] = useState(false);
+
+  useEffect(() => {
+    const { room } = queryString.parse(location.search);
+
+    console.log(room);
+    if (room) {
+      setRoom(room);
+      setHasInitialRoom(true);
+    }
+  }, [location.search]);
 
   return (
     <div className="joinOuterContainer">
@@ -24,7 +36,9 @@ const Join = () => {
             placeholder="Room"
             className="joinInput mt-20"
             type="text"
+            value={room}
             onChange={(event) => setRoom(event.target.value)}
+            disabled={hasInitialRoom}
           />
         </div>
         <Link
