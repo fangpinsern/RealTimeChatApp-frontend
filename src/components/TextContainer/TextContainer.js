@@ -5,7 +5,7 @@ import onlineIcon from "../../icons/onlineIcon.png";
 import "./TextContainer.css";
 
 const TextContainer = ({ users, room }) => {
-  const link = "localhost:3000";
+  const link = process.env.REACT_APP_FRONTEND_ENDPOINT;
   return (
     <div className="textContainer">
       <div>
@@ -28,7 +28,7 @@ const TextContainer = ({ users, room }) => {
           </span>
         </h2>
         <h2>Share this link with your friends:</h2>
-        <p>{`${link}/?room=${room ? room : ""}`}</p>
+        <p>{`${link}/?room=${room}`}</p>
       </div>
       {users ? (
         <div>
