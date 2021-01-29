@@ -16,6 +16,24 @@
   width: 35%;
 }
 
+.chatErrorMessage {
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatErrorButton {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #2979ff;
+  padding: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  width: 100%;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
   .outerContainer {
     height: 100%;

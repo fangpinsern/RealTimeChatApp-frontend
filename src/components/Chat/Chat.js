@@ -16,7 +16,7 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [roomUsers, setRoomUsers] = useState([]);
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState(true);
   const ENDPOINT = process.env.REACT_APP_BACKEND_ENDPOINT;
 
   useEffect(() => {
@@ -30,11 +30,6 @@ const Chat = ({ location }) => {
         setHasError(true);
       }
     });
-
-    // return () => {
-    //   socket.emit("disconnect");
-    //   socket.off();
-    // };
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
@@ -57,15 +52,18 @@ const Chat = ({ location }) => {
     }
   };
 
-  console.log(message, messages);
-
   return hasError ? (
     <div className="outerContainer">
-      <div className="container">
-        <a href="/">
-          <button>Back</button>
+      <div className="chatErrorMessage">
+        <h3>
+          There is someone with the same name as you. Please use a different
+          name
+        </h3>
+        <a href={`/?room=${room}`}>
+          <button className="chatErrorButton">Back</button>
         </a>
       </div>
+
       <TextContainer users={roomUsers} />
     </div>
   ) : (

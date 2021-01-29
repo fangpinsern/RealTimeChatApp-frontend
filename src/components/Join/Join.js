@@ -19,6 +19,11 @@ const Join = ({ location }) => {
     }
   }, [location.search]);
 
+  const joinNewRoom = (event) => {
+    setHasInitialRoom(false);
+    setRoom("");
+  };
+
   return (
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
@@ -49,6 +54,13 @@ const Join = ({ location }) => {
             Sign In
           </button>
         </Link>
+        {hasInitialRoom && (
+          <Link onClick={joinNewRoom} to={`/`}>
+            <button className="button mt-20" type="submit">
+              Join Other Room
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

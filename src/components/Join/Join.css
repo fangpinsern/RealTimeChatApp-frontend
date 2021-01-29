@@ -55,6 +55,10 @@ body {
   margin-top: 20px;
 }
 
+input[type="text"]:disabled {
+  color: #fefefe;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
   .joinOuterContainer {
     height: 100%;
